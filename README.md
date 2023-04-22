@@ -1,4 +1,4 @@
-# Practical Machine Learning on Google Cloud
+# Practical Machine Learning on Google Cloud (WIP)
 
 I created this repository to briefly explain GCP products that might be useful for practical Machine Learning applications and also to store practical resources, guides, and best practices for implementing machine learning solutions on Google Cloud Platform (GCP). The goal is to help you efficiently explore datasets, build models, and solve real-world problems using GCP services.
 
