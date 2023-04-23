@@ -44,6 +44,10 @@ Google Cloud Platform (GCP) is a provider of computing resources for developing,
 </details>
 
 # Step by step Projects
+## Training and Deploying a TensorFlow Model in Vertex AI
+<details>
+  <summary>Click to show</summary>
+</details>
 
 # Other useful repositories
 * [GoogleCloudPlatform/vertex-ai-samples](https://github.com/GoogleCloudPlatform/vertex-ai-samples)
