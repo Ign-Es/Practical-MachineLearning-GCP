@@ -9,7 +9,7 @@ I created this repository to briefly explain GCP products that might be useful f
     2. [GCP Services Categories](#GCP-Services-Categories)
     3. [Main GCP Services used for MLops in this repository ](#Main-GCP-Services-used-for-MLops-in-this-repository )
 2. [Step by step Projects](#Step-by-step-Projects)
-3. [Other useful repositories](#Other-useful-repositories)
+3. [Other related repositories](#Other-related-repositories)
 
 # Machine Learning on GCP
 ## Brief explanation of Google Cloud (GCP)
@@ -49,6 +49,6 @@ Google Cloud Platform (GCP) is a provider of computing resources for developing,
   <summary>Click to show</summary>
 </details>
 
-# Other useful repositories
+# Other related repositories
 * [GoogleCloudPlatform/vertex-ai-samples](https://github.com/GoogleCloudPlatform/vertex-ai-samples)
 * [GoogleCloudPlatform/mlops-on-gcp](https://github.com/GoogleCloudPlatform/mlops-on-gcp)
