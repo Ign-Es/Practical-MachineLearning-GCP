@@ -52,3 +52,4 @@ Google Cloud Platform (GCP) is a provider of computing resources for developing,
 # Other related repositories
 * [GoogleCloudPlatform/vertex-ai-samples](https://github.com/GoogleCloudPlatform/vertex-ai-samples)
 * [GoogleCloudPlatform/mlops-on-gcp](https://github.com/GoogleCloudPlatform/mlops-on-gcp)
+* [statmike/vertex-ai-mlops](https://github.com/statmike/vertex-ai-mlops)
