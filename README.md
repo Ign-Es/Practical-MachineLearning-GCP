@@ -9,11 +9,11 @@ The goal is to help you learn how to use GCP services by gaining hands-on experi
 
 
 # __Table of Contents__
-1. [GCP and Machine Learning](#Brief-explanation-of-Google-Cloud-(GCP))
+1. [GCP and Machine Learning](#Machine-Learning-on-GCP)
     1. [Brief explanation of Google Cloud (GCP)](#Brief-explanation-of-Google-Cloud-(GCP))
     2. [GCP Services Categories](#GCP-Services-Categories)
     3. [Main GCP Services used in this repository ](#Main-GCP-Services-used-in-this-repository )
-        1. [BigQuery](BigQuery)
+        1. [BigQuery](#BigQuery)
 2. [Step by step Practical Exercises](#Step-by-step-Practical-Exercises)
 3. [Step by step Projects](#Step-by-step-Projects)
 4. [Other useful resources](#Other-useful-resources)
