@@ -1,24 +1,35 @@
-# Practical Machine Learning on Google Cloud (WIP)
+# __Practical Machine Learning on Google Cloud__ :warning:(WIP) :warning:
 
-I created this repository to briefly explain GCP products that might be useful for practical Machine Learning applications and also to store practical resources, guides, and best practices for implementing machine learning solutions on Google Cloud Platform (GCP). The goal is to help you efficiently explore datasets, build models, and solve real-world problems using GCP services.
+This repository briefly explains what GCP is, mentions some of its useful services for Machine Learning applications and explains why they are useful. It also __includes__:
+* Practical __exercises and solutions__ for real world tasks using a GCP service.
+* Complete __step by step projects__ using multiple GCP services.
+* Links to other useful resources.
+
+The goal is to help you learn how to use GCP services by gaining hands-on experience solving real-world problems.
 
 
-# Table of Contents
+# __Table of Contents__
 1. [GCP and Machine Learning](#Brief-explanation-of-Google-Cloud-(GCP))
     1. [Brief explanation of Google Cloud (GCP)](#Brief-explanation-of-Google-Cloud-(GCP))
     2. [GCP Services Categories](#GCP-Services-Categories)
-    3. [Main GCP Services used for MLops in this repository ](#Main-GCP-Services-used-for-MLops-in-this-repository )
-2. [Step by step Projects](#Step-by-step-Projects)
-3. [Other related repositories](#Other-related-repositories)
+    3. [Main GCP Services used in this repository ](#Main-GCP-Services-used-in-this-repository )
+        1. [BigQuery](BigQuery:(Storage,Analytical,SQL))
+2. [Step by step Practical Exercises](#Step-by-step-Practical-Exercises)
+3. [Step by step Projects](#Step-by-step-Projects)
+4. [Other useful resources](#Other-useful-resources)
 
-# Machine Learning on GCP
-## Brief explanation of Google Cloud (GCP)
+# __Machine Learning on GCP__
+## __Brief explanation of Google Cloud (GCP)__
 <details>
   <summary>Click to show.</summary>
-Google Cloud Platform (GCP) is a provider of computing resources for developing, deploying, and operating applications on the web. It offers a wide range of services, such as computing power, storage, and networking, which can be accessed on-demand and self-service via a user interface or APIs.
+
+__Google Cloud Platform (GCP)__ is a provider of computing resources for developing, deploying, and operating applications on the web. It offers a wide range of services, such as computing power, storage, and networking, which can be accessed on-demand and self-service via a user interface or APIs.
+
+__In simpler terms__, GCP allows to rent Google's computers and resources to run your own program or store data.  
+
 </details>
 
-### GCP Services Categories
+## __GCP Services Categories__
 <details>
   <summary>Click to show.</summary>
 
@@ -38,18 +49,33 @@ Google Cloud Platform (GCP) is a provider of computing resources for developing,
 * __Internet of Things (IoT)__: Services for connecting, processing, and managing IoT devices and data.
 </details>
 
-### Main GCP Services used for MLops in this repository 
+## __Main GCP Services used in this repository__ 
+
+### __BigQuery__
+<details>
+  <summary>Click to show.</summary>
+
+(Storage, Analytical, SQL)
+
+__Used to store, organize and analyze large amounts of structured data using SQL.__ 
+
+__For example__: Imagine that you are a scientist who collects data about the weather every day. You might have a lot of information about things like temperature, humidity, and wind speed, but it would be hard to look at all of it at once. That's where BigQuery comes in. It lets you put all of that data in one place and ask questions about it, like "What was the average temperature last month?" or "How many days was it windy in the last six months?".
+
+</details>
+
+# __Practical Exercises with Solutions__
+
+The exercises are available in the __exercises__ folder, organized by GCP services.
+
+
+
+# __Step by step Projects__
+## Training and Deploying a TensorFlow Model in Vertex AI :warning:(TBD):warning:
 <details>
   <summary>Click to show</summary>
 </details>
 
-# Step by step Projects
-## Training and Deploying a TensorFlow Model in Vertex AI
-<details>
-  <summary>Click to show</summary>
-</details>
-
-# Other related repositories
+# Other useful resources
 * [GoogleCloudPlatform/vertex-ai-samples](https://github.com/GoogleCloudPlatform/vertex-ai-samples)
 * [GoogleCloudPlatform/mlops-on-gcp](https://github.com/GoogleCloudPlatform/mlops-on-gcp)
 * [statmike/vertex-ai-mlops](https://github.com/statmike/vertex-ai-mlops)
