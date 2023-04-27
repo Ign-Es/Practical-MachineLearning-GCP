@@ -13,7 +13,7 @@ The goal is to help you learn how to use GCP services by gaining hands-on experi
     1. [Brief explanation of Google Cloud (GCP)](#Brief-explanation-of-Google-Cloud-(GCP))
     2. [GCP Services Categories](#GCP-Services-Categories)
     3. [Main GCP Services used in this repository ](#Main-GCP-Services-used-in-this-repository )
-        1. [BigQuery](BigQuery:(Storage,Analytical,SQL))
+        1. [BigQuery](BigQuery)
 2. [Step by step Practical Exercises](#Step-by-step-Practical-Exercises)
 3. [Step by step Projects](#Step-by-step-Projects)
 4. [Other useful resources](#Other-useful-resources)
