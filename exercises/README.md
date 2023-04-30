@@ -317,3 +317,87 @@ WHERE id LIKE '%USW%' AND EXTRACT(MONTH FROM date) = 1 AND EXTRACT(YEAR FROM dat
 </details>
 
 # Advanced Exercises
+
+
+Exercise 1: Find the top 10 most common co-occurrences of two hashtags in tweets from the 2016 US Presidential Election using the public dataset.
+
+Solution:
+
+```sql
+WITH hashtags AS (
+  SELECT id, 
+    LOWER(hashtag) AS hashtag
+  FROM `bigquery-public-data`.samples.natality
+  CROSS JOIN UNNEST(SPLIT(text, ' ')) AS hashtag
+  WHERE REGEXP_CONTAINS(text, r'(?i)#(election2016|trump|clinton)')
+    AND LOWER(hashtag) NOT IN ('#election2016', '#trump', '#clinton')
+)
+
+SELECT hashtag1, hashtag2, COUNT(*) AS cooccurrence_count
+FROM (
+  SELECT h1.hashtag AS hashtag1, h2.hashtag AS hashtag2
+  FROM hashtags h1
+  JOIN hashtags h2
+  ON h1.id = h2.id
+    AND h1.hashtag < h2.hashtag
+)
+GROUP BY hashtag1, hashtag2
+ORDER BY cooccurrence_count DESC
+LIMIT 10
+```
+
+Exercise 2: Find the average number of songs added to users' playlists per day from the Million Playlist Dataset.
+
+Solution:
+
+```sql
+SELECT DATE(timestamp) AS date, 
+  COUNT(*) AS total_songs_added, 
+  COUNT(DISTINCT playlist_id) AS total_playlists_updated,
+  COUNT(*) / COUNT(DISTINCT playlist_id) AS avg_songs_per_playlist
+FROM `bigquery-public-data`.spotify_million_playlist_dataset.playlists
+CROSS JOIN UNNEST(tracks) AS track
+GROUP BY date
+ORDER BY date ASC
+```
+
+Exercise 3: Find the percentage of customers who made a repeat purchase within 30 days of their initial purchase from the Google Merchandise Store dataset.
+
+Solution:
+
+```sql
+WITH customer_activity AS (
+  SELECT fullVisitorId,
+    DATE(MIN(t.date)) AS first_purchase_date,
+    DATE(MAX(t.date)) AS most_recent_purchase_date
+  FROM `bigquery-public-data`.google_analytics_sample.ecommerce_transactions t
+  WHERE t.v2ProductName IS NOT NULL
+  GROUP BY fullVisitorId
+), repeat_customers AS (
+  SELECT COUNT(DISTINCT r.fullVisitorId) AS repeat_customer_count
+  FROM customer_activity r
+  JOIN customer_activity f
+  ON r.fullVisitorId = f.fullVisitorId
+    AND r.most_recent_purchase_date > f.first_purchase_date
+    AND DATE_DIFF(r.most_recent_purchase_date, f.first_purchase_date, DAY) <= 30
+)
+
+SELECT 
+  ROUND(repeat_customer_count / COUNT(DISTINCT fullVisitorId) * 100, 2) AS repeat_customer_percentage
+FROM repeat_customers
+CROSS JOIN (SELECT COUNT(DISTINCT fullVisitorId) FROM customer_activity) AS total_customers
+```
+
+Exercise 4: Find the average rating and price of the top 10% most popular dishes from Yelp reviews in Las Vegas.
+
+Solution:
+
+```sql
+WITH popular_dishes AS (
+  SELECT REPLACE(LOWER(SPLIT(SPLIT(dish_name, '(')[SAFE_OFFSET(0)], ',')[SAFE_OFFSET(0)]), '"', '') AS dish_name, 
+    COUNT(*) AS review_count
+  FROM `bigquery-public-data`.yelp_reviews.reviews
+  CROSS JOIN UNNEST(SPLIT(REPLACE(SPLIT(SPLIT(JSON_EXTRACT(`json`, '$.categories')[SAFE_OFFSET(0)], ':')[SAFE_OFFSET(1)], '[', ''), ']', ''), ', ')) AS category
+  WHERE category = 'Restaurants' AND city = 'Las Vegas'
+  GROUP BY dish_name
+  H
