@@ -63,6 +63,18 @@ __For example__: Imagine that you are a scientist who collects data about the we
 
 </details>
 
+### __Pub/Sub__
+<details>
+  <summary>Click to show.</summary>
+
+(Ingestion & Process)
+
+__Messaging system that helps different computer programs talk to each other. It's like a bulletin board that lets programs share messages with each other, from simple text to more complex data.__ 
+
+__For example__: Imagine you're part of a big team working on a project. You and your teammates are all using different computer programs, but you need to be able to share information with each other. Pub/Sub helps you do that. It's like a big bulletin board that everyone can post messages to and read messages from. When someone posts a message, Pub/Sub makes sure that everyone who needs to see it gets a copy.
+
+</details>
+
 # __Practical Exercises with Solutions__
 
 The exercises are available in the __exercises__ folder, organized by GCP services.
