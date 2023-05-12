@@ -1,4 +1,4 @@
-# Begginner Exercises
+# Beginner Exercises
 ## Exercise 1:
  Find the total number of flights by carrier for the year 2019 from the US Flights dataset.
 
