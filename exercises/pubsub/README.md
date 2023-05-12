@@ -100,7 +100,7 @@ gcloud pubsub topics publish <topic_name> --message <message_data>
 
 5. Press Enter to execute the command.
 
-## Exercise 6:
+## Exercise 7:
 Create a subscription to a Pub/Sub topic using the gcloud command line tool.
 
 Solution:
@@ -119,7 +119,7 @@ gcloud pubsub subscriptions create <subscription_name> --topic <topic_name>
 
 5. Press Enter to execute the command.
 
-## Exercise 7:
+## Exercise 8:
 Pull messages from a Pub/Sub subscription using the gcloud command line tool.
 
 Solution:
@@ -140,8 +140,7 @@ gcloud pubsub subscriptions pull <subscription_name> --auto-ack
 
 6. If you want to acknowledge the messages after pulling them, remove the `--auto-ack` flag from the command and press Enter.
 
-# Advanced Exercises
-## Exercise 1:
+## Exercise 9:
 Send a message containing a weather update for a city to a Pub/Sub topic.
 
 Solution:
@@ -158,7 +157,7 @@ gcloud pubsub topics create weather_updates
 gcloud pubsub topics publish weather_updates --message "Current temperature in New York City: 75°F"
 ```
 
-## Exercise 2:
+## Exercise 10:
 Create a Cloud Function that logs weather updates received on a Pub/Sub topic.
 
 Solution:
@@ -182,7 +181,8 @@ def handler(data, context):
     print(data)
 ```
 
-## Exercise 3:
+# Advanced Exercises
+## Exercise 1:
 Create a Dataflow pipeline that reads weather updates from a Pub/Sub topic and writes them to a BigQuery table.
 
 Solution:
@@ -203,3 +203,76 @@ gcloud dataflow jobs run weather_updates_pipeline --gcs-location=gs://dataflow-t
 
 4. In the pipeline parameters, replace `<region>`, `<bucket>`, `<project-id>`, `<dataset>`, and `<table>` with the appropriate values for your project and environment.
 
+
+## Exercise 2:
+Create a Cloud Function that publishes a weather update for a specific city to a Pub/Sub topic every hour.
+
+Solution:
+
+1. Create a Pub/Sub topic using the following command:
+
+```
+gcloud pubsub topics create hourly_weather_updates
+```
+
+2. Create a new Cloud Function using the following command:
+
+```
+gcloud functions deploy hourly_weather_updates --runtime python37 --trigger-topic hourly_weather_updates --entry-point handler --schedule "0 * * * *"
+```
+
+3. In the function code, publish a message containing the weather update for the specific city using the following code:
+
+```python
+from google.cloud import pubsub_v1
+
+publisher = pubsub_v1.PublisherClient()
+
+def handler(event, context):
+    topic_path = publisher.topic_path('<project-id>', 'hourly_weather_updates')
+    message = "Current temperature in New York City: 75°F"
+    publisher.publish(topic_path, data=message.encode('utf-8'))
+```
+
+4. In the Cloud Function deployment command, replace `<project-id>` with your GCP project ID.
+
+## Exercise 3:
+Create a Cloud Function that receives messages from a Pub/Sub topic containing customer feedback and performs sentiment analysis on them.
+
+Solution:
+
+1. Create a Pub/Sub subscription using the following command:
+
+```
+gcloud pubsub subscriptions create customer_feedback_sub --topic=customer_feedback
+```
+
+2. Create a new Cloud Function using the following command:
+
+```
+gcloud functions deploy sentiment_analysis --runtime python37 --trigger-topic customer_feedback_sub --entry-point handler
+```
+
+3. In the function code, use the Google Cloud Natural Language API to perform sentiment analysis on incoming messages using the following code:
+
+```python
+from google.cloud import pubsub_v1, language_v1
+import json
+
+subscriber = pubsub_v1.SubscriberClient()
+language_client = language_v1.LanguageServiceClient()
+
+def handler(data, context):
+    try:
+        message = json.loads(data.decode('utf-8'))
+        document = language_v1.Document(content=message['text'], type_=language_v1.Document.Type.PLAIN_TEXT)
+        sentiment = language_client.analyze_sentiment(request={'document': document}).document_sentiment
+        print(f"Sentiment score for message '{message['text']}': {sentiment.score}")
+    except Exception as e:
+        print("Error analyzing sentiment: {}".format(e))
+        
+subscription_path = subscriber.subscription_path('<project-id>', 'customer_feedback_sub')
+subscriber.subscribe(subscription_path, callback=handler)
+```
+
+4. In the Cloud Function deployment command and subscription path, replace `<project-id>` with your GCP project ID.
